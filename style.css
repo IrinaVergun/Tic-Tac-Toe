@@ -1,0 +1,101 @@
+#allContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  /* border: 2px solid black; */
+  margin-left: 37%;
+  margin-top: 3%;
+}
+
+#cells-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  padding-top: 20px;
+  /* border: 2px solid black; */
+}
+.cell {
+  font-size: 70px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border: 2px solid red;
+}
+#nowGo {
+  margin-top: 1%;
+  font-size: 30px;
+  margin-left: 50px;
+  color: rgb(50, 50, 226);
+  font-weight: bold;
+}
+#winner {
+  margin-top: 0%;
+  font-size: 30px;
+  margin-left: 55px;
+  color: black;
+  font-weight: bold;
+}
+#button {
+  margin-top: 0;
+  border: 2px solid black;
+  cursor: pointer;
+  margin-left: 55px;
+  font-size: 30px;
+  height: 60px;
+  width: 200px;
+}
+body {
+  background-color: rgba(0, 0, 0, 0.379);
+  /* border: 2px solid black; */
+}
+@media screen and (max-width: 576px) {
+  #allContainer {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    /* border: 2px solid black; */
+    margin-left: 16%;
+    margin-top: 3%;
+  }
+  .cell {
+    font-size: 70px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border: 2px solid red;
+  }
+  #cells-container {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    padding-top: 20px;
+    /* border: 2px solid black; */
+  }
+  #button {
+    margin-top: 0;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-left: 25px;
+    font-size: 30px;
+    height: 60px;
+    width: 200px;
+  }
+  #nowGo {
+    margin-top: 1%;
+    font-size: 30px;
+    margin-left: 26px;
+    color: rgb(50, 50, 226);
+    font-weight: bold;
+  }
+  #winner {
+    margin-top: 0%;
+    font-size: 30px;
+    margin-left: 26px;
+    color: black;
+    font-weight: bold;
+  }
+}
