@@ -20,6 +20,7 @@ const winLines = [
   [0, 4, 8],
   [0, 6, 8],
   [2, 4, 6],
+  //0,4,8
 ];
 
 function init() {
