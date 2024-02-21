@@ -12,7 +12,14 @@
   display: grid;
   grid-template-columns: repeat(3, 100px);
   padding-top: 20px;
+  visibility: hidden;
   /* border: 2px solid black; */
+}
+.viborknopki {
+  display: flex;
+
+  flex-direction: row;
+  margin-right: 62%;
 }
 .cell {
   font-size: 70px;
@@ -29,6 +36,7 @@
   margin-left: 50px;
   color: rgb(50, 50, 226);
   font-weight: bold;
+  visibility: hidden;
 }
 #winner {
   margin-top: 0%;
@@ -37,12 +45,12 @@
   color: black;
   font-weight: bold;
 }
-#button {
+button {
   margin-top: 0;
   border: 2px solid black;
   cursor: pointer;
-  margin-left: 55px;
-  font-size: 30px;
+  margin-left: 5px;
+  font-size: 20px;
   height: 60px;
   width: 200px;
 }

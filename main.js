@@ -1,7 +1,9 @@
+const cellsconteiner = document.getElementById("cells-container");
 const winner = document.getElementById("winner"); //поле победителя
 const cells = document.querySelectorAll(".cell"); //каждая ячейка
 const resButton = document.getElementById("button"); //кнопка
 const nowGo = document.getElementById("nowGo"); //поле кто ходит
+const compbutton = document.getElementById("compbutton");
 const players = {
   //постоянные в объекте чтобы не сложно их было достать
   x: "x",
@@ -9,6 +11,8 @@ const players = {
 };
 let currentPlayer = ""; //текущему игроку
 let isGameRunning = false; //игра не идёт
+let twoplayers = false;
+let compplay = false;
 let arr = Array(9).fill(""); //пуустой массив чтобы потом его наполнить значениями
 const winLines = [
   //выйгрышные линии
@@ -23,13 +27,28 @@ const winLines = [
   //0,4,8
 ];
 
+function compinit() {
+  cells.forEach((cell) => {
+    cell.addEventListener("click", clickCell);
+  });
+  compbutton.addEventListener("click", function () {
+    compplay = true;
+    twoplayers = false;
+    restartGame();
+  });
+}
+
 function init() {
   //инициализация, привязывает клики по
   cells.forEach((cell) => {
     //
     cell.addEventListener("click", clickCell); //ячейке
   });
-  resButton.addEventListener("click", restartGame); //по кнопке к функциям
+  resButton.addEventListener("click", function () {
+    compplay = false;
+    twoplayers = true;
+    restartGame();
+  }); //по кнопке к функциям
 }
 
 function startGame() {
@@ -38,7 +57,26 @@ function startGame() {
   cells.forEach((cell) => (cell.textContent = "")); //перебираю фор ичем ккаждую ячейку и вставляю туда пустое значение
   winner.textContent = ""; //также победителю
   currentPlayer = players.x; //игр начинает х
-  nowGo.textContent = `Сейчас ходит : ${currentPlayer}`; // в полу кто ходит сообщаю чья очередь
+  nowGo.textContent = `Сейчас ходит : ${currentPlayer}`;
+  if (compplay) {
+    compGo();
+  } // в полу кто ходит сообщаю чья очередь
+}
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function compGo() {
+  console.log("ход компа");
+  let vseicheiki = document.getElementsByClassName("cell");
+  // console.log(vseicheiki);
+  let pysto = Array.from(vseicheiki).filter((cell) => cell.textContent == "");
+  console.log(pysto);
+  let indexpysto = getRandomInt(0, pysto.length - 1);
+  console.log(indexpysto);
+  let randomIcheika = pysto[indexpysto];
+  randomIcheika.click();
 }
 function clickCell() {
   //клик по кнопке
@@ -58,6 +96,10 @@ function clickCell() {
   }
   currentPlayer = currentPlayer === players.x ? players.o : players.x; //меняем текущего игрока на противоположного
   nowGo.textContent = `Сейчас ходит : ${currentPlayer}`; // в графу кто ходит записываем текущего игрока
+
+  if (compplay && currentPlayer == players.x) {
+    compGo();
+  }
 }
 
 function checkLine(line) {
@@ -100,6 +142,8 @@ function finishGame() {
 }
 
 function restartGame() {
+  cellsconteiner.style.visibility = "visible";
+  nowGo.style.visibility = "visible";
   //после начатия рестарта заканчивает игру и начинает новую
   finishGame();
   startGame();
@@ -108,5 +152,6 @@ function restartGame() {
 window.addEventListener("load", () => {
   //нужен виндоу чтобы скрипт смог прогрузиться
   init();
+  compinit();
   startGame();
 });
