@@ -6,7 +6,7 @@ const nowGo = document.getElementById("nowGo"); //поле кто ходит
 const compbutton = document.getElementById("compbutton");
 const players = {
   //постоянные в объекте чтобы не сложно их было достать
-  x: "x",
+  x: "х",
   o: "o",
 };
 let currentPlayer = ""; //текущему игроку
