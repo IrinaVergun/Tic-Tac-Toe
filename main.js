@@ -1,9 +1,10 @@
 const cellsconteiner = document.getElementById("cells-container");
 const winner = document.getElementById("winner"); //поле победителя
 const cells = document.querySelectorAll(".cell"); //каждая ячейка
-const resButton = document.getElementById("button"); //кнопка
+// const resButton = document.getElementById("button"); //кнопкач
 const nowGo = document.getElementById("nowGo"); //поле кто ходит
-const compbutton = document.getElementById("compbutton");
+// const compbutton = document.getElementById("compbutton");
+const select = document.getElementById('floatingSelect')
 const players = {
   //постоянные в объекте чтобы не сложно их было достать
   x: "х",
@@ -13,6 +14,7 @@ let currentPlayer = ""; //текущему игроку
 let isGameRunning = false; //игра не идёт
 let twoplayers = false;
 let compplay = false;
+
 let arr = Array(9).fill(""); //пуустой массив чтобы потом его наполнить значениями
 const winLines = [
   //выйгрышные линии
@@ -27,16 +29,16 @@ const winLines = [
   //0,4,8
 ];
 
-function compinit() {
-  cells.forEach((cell) => {
-    cell.addEventListener("click", clickCell);
-  });
-  compbutton.addEventListener("click", function () {
-    compplay = true;
-    twoplayers = false;
-    restartGame();
-  });
-}
+// function compinit() {
+//   cells.forEach((cell) => {
+//     cell.addEventListener("click", clickCell);
+//   });
+//   compbutton.addEventListener("click", function () {
+//     compplay = true;
+//     twoplayers = false;
+//     restartGame();
+//   });
+// }
 
 function init() {
   //инициализация, привязывает клики по
@@ -44,10 +46,20 @@ function init() {
     //
     cell.addEventListener("click", clickCell); //ячейке
   });
-  resButton.addEventListener("click", function () {
-    compplay = false;
+  select.addEventListener("change", function (event) {
+    console.log(event.target.value);
+    if (event.target.value==1){
+      compplay = false;
     twoplayers = true;
-    restartGame();
+    restartGame()
+    }
+    else if(event.target.value==2){
+      compplay = true;
+      twoplayers = false;
+      restartGame()
+    }
+
+   
   }); //по кнопке к функциям
 }
 

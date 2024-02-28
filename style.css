@@ -1,13 +1,15 @@
 #allContainer {
+  
   display: flex;
   flex-direction: column;
   align-self: center;
   justify-content: center;
   /* border: 2px solid black; */
-  margin-top: 3%;
+  margin-top: 10%;
 }
 
 #cells-container {
+ 
   display: grid;
   grid-template-columns: repeat(3, 100px);
   padding-top: 20px;
@@ -15,11 +17,22 @@
  justify-content: center;
   
 }
-.viborknopki {
+
+
+.form-floating{
+  margin-top: 15px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-select {
+
+  width:18%;
   display: flex;
   justify-content: center;
-gap: 5px;
-  flex-direction: row;
+font-size: 25px;
+height: 35px;
+  flex-direction: column-reverse;
 
 }
 .cell {
@@ -34,7 +47,7 @@ gap: 5px;
 #nowGo {
   display: grid;
   margin-top: 1%;
-  font-size: 30px;
+  font-size: 30px;                                  
   justify-content: center;
   color: rgb(50, 50, 226);
   font-weight: bold;
@@ -49,7 +62,8 @@ gap: 5px;
   color: black;
   font-weight: bold;
 }
-button {
+/* .form{
+  display: flex;
   margin-top: 0;
   border: 2px solid black;
   cursor: pointer;
@@ -57,8 +71,8 @@ button {
   
   font-size: 20px;
   height: 60px;
-  width: 200px;
-}
+  width: 200px; */
+/* } */
 body {
   background-color: rgba(0, 0, 0, 0.379);
  
