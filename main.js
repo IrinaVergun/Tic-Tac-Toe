@@ -5,6 +5,10 @@ const cells = document.querySelectorAll(".cell"); //каждая ячейка
 const nowGo = document.getElementById("nowGo"); //поле кто ходит
 // const compbutton = document.getElementById("compbutton");
 const select = document.getElementById('floatingSelect')
+let reset=document.getElementById('reset')
+let c7=document.getElementById('c6')
+// console.log(c5);
+
 const players = {
   //постоянные в объекте чтобы не сложно их было достать
   x: "х",
@@ -14,6 +18,16 @@ let currentPlayer = ""; //текущему игроку
 let isGameRunning = false; //игра не идёт
 let twoplayers = false;
 let compplay = false;
+let compHARDplay=false;
+
+
+ function color(cell, currentPlayer){
+  if (currentPlayer==players.x){
+    cell.style.color='#0062ffd9'
+  }
+  else {
+    cell.style.color='#0ff500'
+ }}
 
 let arr = Array(9).fill(""); //пуустой массив чтобы потом его наполнить значениями
 const winLines = [
@@ -40,6 +54,12 @@ const winLines = [
 //   });
 // }
 
+function res(){
+  if (reset.onclick){
+    console.log('hi');
+    restartGame()
+  }
+}
 function init() {
   //инициализация, привязывает клики по
   cells.forEach((cell) => {
@@ -51,11 +71,20 @@ function init() {
     if (event.target.value==1){
       compplay = false;
     twoplayers = true;
+    compHARDplay=false
     restartGame()
     }
-    else if(event.target.value==2){
+     if(event.target.value==2){
       compplay = true;
       twoplayers = false;
+      compHARDplay=false
+      restartGame()
+    }
+     if(event.target.value==3){
+
+      twoplayers = false;
+      compplay = false;
+       compHARDplay=true
       restartGame()
     }
 
@@ -69,10 +98,15 @@ function startGame() {
   cells.forEach((cell) => (cell.textContent = "")); //перебираю фор ичем ккаждую ячейку и вставляю туда пустое значение
   winner.textContent = ""; //также победителю
   currentPlayer = players.x; //игр начинает х
+  
   nowGo.textContent = `Сейчас ходит : ${currentPlayer}`;
   if (compplay) {
     compGo();
   } // в полу кто ходит сообщаю чья очередь
+  if(compHARDplay){
+    compHardGo()
+    // checkLineComp()
+  }
 }
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -90,6 +124,112 @@ function compGo() {
   let randomIcheika = pysto[indexpysto];
   randomIcheika.click();
 }
+
+// function checkLineComp(line) {
+//   //ходы выйгрыша
+//   const [a, b, c] = line; //выйгрыш состоит из 3 ячеек
+//   const cellA = arr[a]; // выдергиваем значени из массива по индексу
+//   const cellB = arr[b]; //тоесть 3 значения а,б,с будут являться значениями в массиве
+//   const cellC = arr[c];
+//   // if ([cellA, cellB, cellC].includes("")) {
+//   //   //
+//   //   // проверяем что не одна из этих ячеек не содержит пустой линии
+//   //   return false;
+//   // }
+//   // return cellA === cellB && cellB === cellC;
+
+  
+// }
+
+
+function checkLineComp(line, player) {
+  //ходы выйгрыша
+  const [a, b, c] = line; //выйгрыш состоит из 3 ячеек
+  const cellA = arr[a]; // выдергиваем значени из массива по индексу
+  const cellB = arr[b]; //тоесть 3 значения а,б,с будут являться значениями в массиве
+  const cellC = arr[c];
+  if ([cellA, cellB, cellC].includes("")) {
+  //  if( two = (cellA==='х' &&  cellB==='х' || cellB==='х'&& cellC==='х' || cellC==='х' && cellA==='х'  )){
+    if(cellA===player  &&  cellB === player){
+     return cells[c]
+    } 
+   else if(cellB===player &&  cellC === player){
+    return cells[a]
+    } 
+    else if(cellC===player &&  cellA === player){
+      return cells[b]
+    } 
+   console.log(two,'two') //3 условия сделать
+  }
+
+return false
+
+   }
+  // }
+
+function compHardGo(){
+
+  
+  
+  console.log("ход компа");
+  let vseicheiki = document.getElementsByClassName("cell");
+  // console.log(vseicheiki);
+  let pysto = Array.from(vseicheiki).filter((cell) => cell.textContent == "");
+  console.log(pysto);
+  let indexpysto = getRandomInt(0, pysto.length - 1);
+  console.log(indexpysto);
+  let randomIcheika = pysto[indexpysto];
+  if(vseicheiki[6].textContent==''){vseicheiki[6].click()
+  return}
+
+  else if(vseicheiki[4].textContent==''){
+   
+    vseicheiki[4].click()
+    return
+  }
+  else if(vseicheiki[4].textContent=='o' && vseicheiki[8].textContent==''){
+vseicheiki[8].click()
+return
+  }
+  else {
+    // сначала ищем возможную победу противника и не даем ему победить!
+    for (const line of winLines) {
+      let two= checkLineComp(line, players.o)
+      
+      
+            //линии в массиве выйгрыш линий
+            if (two!==false) {
+              //если вернёт тру значит есть победить а тру он вернёт из фунции чек лайн
+              // winner.textContent = `${currentPlayer} Победил-_-`;
+              // return true;
+            two.click()
+            return
+            }
+          }
+
+
+      // а если противник далек от победы, то пытаемся победить сами!
+    for (const line of winLines) {
+let two= checkLineComp(line, players.x)
+
+
+      //линии в массиве выйгрыш линий
+      if (two!==false) {
+        //если вернёт тру значит есть победить а тру он вернёт из фунции чек лайн
+        // winner.textContent = `${currentPlayer} Победил-_-`;
+        // return true;
+      two.click()
+      return
+      }
+    }
+
+    randomIcheika.click();
+    return}
+
+  
+  }
+
+
 function clickCell() {
   //клик по кнопке
   if (!isGameRunning) {
@@ -100,6 +240,7 @@ function clickCell() {
     return; //
   }
   this.textContent = currentPlayer; //значение ячейки равняется текущему игроку
+  color(this, currentPlayer)
   let cellIndex = this.dataset.cellIndex; //делаю переменную индкса соответсвующего яйчейки с индексом
   arr[cellIndex] = currentPlayer; //привязываю мой массив  к этому индуксу и говорю что отныне они едино и равняюих к текущему игроку
   if (checkGameOver()) {
@@ -112,6 +253,9 @@ function clickCell() {
   if (compplay && currentPlayer == players.x) {
     compGo();
   }
+  if (compHARDplay && currentPlayer == players.x) {
+    compHardGo();
+  }
 }
 
 function checkLine(line) {
@@ -121,11 +265,20 @@ function checkLine(line) {
   const cellB = arr[b]; //тоесть 3 значения а,б,с будут являться значениями в массиве
   const cellC = arr[c];
   if ([cellA, cellB, cellC].includes("")) {
+   if( two = (cellA==='х' &&  cellB==='х' || cellB==='х'&& cellC==='х' || cellC==='х' && cellA==='х'  )){
+   console.log(two,'two') //3 условия сделать
+  return}
+      
+    
     //
     // проверяем что не одна из этих ячеек не содержит пустой линии
     return false;
   }
+  
   return cellA === cellB && cellB === cellC;
+
+
+  
 }
 
 function checkGameOver() {
@@ -164,6 +317,7 @@ function restartGame() {
 window.addEventListener("load", () => {
   //нужен виндоу чтобы скрипт смог прогрузиться
   init();
-  compinit();
+ 
+ 
   startGame();
 });

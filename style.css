@@ -1,3 +1,6 @@
+html{
+  background-image: url(img/obloko.1.jpg);
+}
 #allContainer {
   
   display: flex;
@@ -7,9 +10,11 @@
   /* border: 2px solid black; */
   margin-top: 10%;
 }
+.green{
+  background-color: green;
+}
 
 #cells-container {
- 
   display: grid;
   grid-template-columns: repeat(3, 100px);
   padding-top: 20px;
@@ -18,6 +23,17 @@
   
 }
 
+.retern{
+  display: flex;
+  width: 56px;
+  height: 56px;
+  background-color:#5fefef82;
+  /* border-radius: 50%; */
+  background-image: url(img/reset5.png);
+  
+  /* padding-left: 5px; */
+  mask-repeat: no-repeat;
+}
 
 .form-floating{
   margin-top: 15px; 
@@ -26,11 +42,12 @@
   align-items: center;
 }
 .form-select {
-
+  background-color:#5fefef82;
+  
   width:18%;
   display: flex;
   justify-content: center;
-font-size: 25px;
+font-size: 23px;
 height: 35px;
   flex-direction: column-reverse;
 
@@ -42,14 +59,15 @@ height: 35px;
   justify-content: center;
   width: 100px;
   height: 100px;
-  border: 2px solid red;
+  border: 2px solid #be5fef;
 }
 #nowGo {
   display: grid;
   margin-top: 1%;
   font-size: 30px;                                  
   justify-content: center;
-  color: rgb(50, 50, 226);
+  color:#be5fef;
+  
   font-weight: bold;
   visibility: hidden;
 }
@@ -58,8 +76,8 @@ height: 35px;
   justify-content: center;
   margin-top: 0%;
   font-size: 30px;
-  margin-left: 55px;
-  color: black;
+  /* margin-left: px; */
+  color:#be5fef;
   font-weight: bold;
 }
 /* .form{
@@ -73,10 +91,8 @@ height: 35px;
   height: 60px;
   width: 200px; */
 /* } */
-body {
-  background-color: rgba(0, 0, 0, 0.379);
- 
-}
+
+
 @media screen and (max-width: 576px) {
   #allContainer {
     display: flex;

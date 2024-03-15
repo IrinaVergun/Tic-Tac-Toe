@@ -15,20 +15,23 @@
         <div class="cell" data-cell-index="1"></div>
         <div class="cell" data-cell-index="2"></div>
         <div class="cell" data-cell-index="3"></div>
-        <div class="cell" data-cell-index="4"></div>
+        <div class="cell" data-cell-index="4" ></div>
         <div class="cell" data-cell-index="5"></div>
-        <div class="cell" data-cell-index="6"></div>
+        <div class="cell" data-cell-index="6" ></div>
         <div class="cell" data-cell-index="7"></div>
         <div class="cell" data-cell-index="8"></div>
       </div>
      
       <div class="form-floating">
         <select class="form-select"   id="floatingSelect" aria-label="Floating label select example">
-          <!-- <option selected class="formm" >Выберите игру </option> -->
-          <option value="1" id="button">2 Игрока/другое</option>
-          <option value="2" id="compbutton">Против компа/другое</option>
+          <option selected class="formm" >Выберите игру </option>
+          <option value="1" id="button">2 Игрока</option>
+          <option value="2" id="compbutton">Против легкого компа</option>
+          <option value="3" id="compbuttonUsl">Против сложного компа</option>
+
           <!-- <option value="3">Три</option> -->
         </select>
+       
         <!-- <label for="floatingSelect"></label> -->
       <!-- </div>
       <div class="viborknopki">
@@ -37,6 +40,7 @@
         
       </div> --> <p id="nowGo"></p>
       <h1 id="winner"></h1>
+       <button id="reset" onclick="res()" class="retern"></button>
     </div>
 
     <script src="main.js"></script>
