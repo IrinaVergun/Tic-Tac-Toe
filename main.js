@@ -22,8 +22,21 @@ let compHARDplay=false;
 let randomIcheika2=true
 
 
+let allgame = new Audio();
+allgame.src = "audio/allgame.mp3";
+let clickNavibor = new Audio()
+clickNavibor.src = "audio/clickNavibor.mp3";
+let ggwp = new Audio()
+ggwp.src = "audio/ggwp.mp3"
+let pobeda = new Audio()
+pobeda.src = "audio/pobeda.mp3"
+
+
+
+
 
  function color(cell, currentPlayer){
+  allgame.play()
   if (currentPlayer==players.x){
     cell.style.color='#0062ffd9'
   }
@@ -63,6 +76,7 @@ function res(){
   }
 }
 function init() {
+
   //инициализация, привязывает клики по
   cells.forEach((cell) => {
     //
@@ -94,12 +108,14 @@ function init() {
   }); //по кнопке к функциям
 }
 
+
 function startGame() {
   //начало игры
   isGameRunning = true; //игра идёт
   cells.forEach((cell) => (cell.textContent = "")); //перебираю фор ичем ккаждую ячейку и вставляю туда пустое значение
   winner.textContent = ""; //также победителю
   currentPlayer = players.x; //игр начинает х
+
   
   nowGo.textContent = `Сейчас ходит : ${currentPlayer}`;
   if (compplay) {
@@ -293,6 +309,9 @@ function clickCell() {
   if (compHARDplay && currentPlayer == players.x) {
     compHardGo();
   }
+  if( players.o ){
+    clickNavibor.play()
+  }
 }
 
 function checkLine(line) {
@@ -326,8 +345,16 @@ function checkGameOver() {
     if (checkLine(line)) {
       //если вернёт тру значит есть победить а тру он вернёт из фунции чек лайн
       winner.textContent = `${currentPlayer} Победил-_-`;
+      if(currentPlayer==players.x){
+        ggwp.play()
+      }
+     
+      if(currentPlayer==players.o){
+        pobeda.play()
+      }
       return true;
     }
+     
   }
   if (!arr.includes("")) {
     //если в массиве нету пустых строк
