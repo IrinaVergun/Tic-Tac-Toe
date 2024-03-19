@@ -237,7 +237,7 @@ function compHardGo(){
     return
   }
   
-  else if(vseicheiki[4].textContent=='o' && vseicheiki[0].textContent=='х'){
+   if(vseicheiki[4].textContent=='o' && vseicheiki[0].textContent=='х'){
 vseicheiki[8].click()
 return
   }
@@ -251,6 +251,24 @@ return
           }
   
   else {
+
+     // а если противник далек от победы, то пытаемся победить сами!
+     for (const line of winLines) {
+      let two= checkLineComp(line, players.x)
+      
+      
+            //линии в массиве выйгрыш линий
+            if (two!==false) {
+              //если вернёт тру значит есть победить а тру он вернёт из фунции чек лайн
+              // winner.textContent = `${currentPlayer} Победил-_-`;
+              // return true;
+            two.click()
+            return
+            }
+          }
+
+
+
     // сначала ищем возможную победу противника и не даем ему победить!
     for (const line of winLines) {
       let two= checkLineComp(line, players.o)
@@ -267,20 +285,7 @@ return
           }
 
 
-      // а если противник далек от победы, то пытаемся победить сами!
-    for (const line of winLines) {
-let two= checkLineComp(line, players.x)
-
-
-      //линии в массиве выйгрыш линий
-      if (two!==false) {
-        //если вернёт тру значит есть победить а тру он вернёт из фунции чек лайн
-        // winner.textContent = `${currentPlayer} Победил-_-`;
-        // return true;
-      two.click()
-      return
-      }
-    }
+ 
 
     
     randomIcheika.click();
