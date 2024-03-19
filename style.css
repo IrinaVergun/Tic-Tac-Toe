@@ -2,8 +2,13 @@ html{
   background-image: url(img/obloko.1.jpg);
 }
 .music{
-  width:40px;
-  height: 40px;
+  width:37px;
+  height: 37px;
+  background-image: url(img/music.png);
+  background-color:#5fefef82;
+  cursor: pointer;
+  
+  
 }
 #allContainer {
   
@@ -37,6 +42,7 @@ html{
   
   /* padding-left: 5px; */
   mask-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .form-floating{
@@ -45,6 +51,7 @@ html{
   flex-direction: column;
   align-items: center;
   padding-left: 4px;
+  
 }
 .form-select {
   background-color:#5fefef82;
@@ -55,6 +62,7 @@ html{
 font-size: 23px;
 height: 35px;
   flex-direction: column-reverse;
+  cursor: pointer;
 
 }
 .cell {
