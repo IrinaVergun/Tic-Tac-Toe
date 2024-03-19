@@ -30,6 +30,8 @@ let ggwp = new Audio()
 ggwp.src = "audio/ggwp.mp3"
 let pobeda = new Audio()
 pobeda.src = "audio/pobeda.mp3"
+let nichiay = new Audio()
+nichiay.src = "audio/nichiay.mp3"
 
 
 
@@ -359,6 +361,7 @@ function checkGameOver() {
   if (!arr.includes("")) {
     //если в массиве нету пустых строк
     winner.textContent = "Пфф, всего-то ничья";
+    nichiay.play()
     return true;
   }
 }
