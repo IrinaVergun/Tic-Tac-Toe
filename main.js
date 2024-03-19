@@ -253,15 +253,15 @@ function compHardGo(){
     return
   }
   
-   if(vseicheiki[4].textContent=='o' && vseicheiki[0].textContent=='х'){
+   if(vseicheiki[4].textContent=='o' && vseicheiki[0].textContent==players.x){
 vseicheiki[8].click()
 return
   }
-  else if(vseicheiki[4].textContent=='o' && vseicheiki[6].textContent=='х'){
+  else if(vseicheiki[4].textContent=='o' && vseicheiki[6].textContent==players.x){
     vseicheiki[2].click()
     return
       }
-      else if(vseicheiki[4].textContent=='o' && vseicheiki[2].textContent=='х'){
+      else if(vseicheiki[4].textContent=='o' && vseicheiki[2].textContent==players.x){
         vseicheiki[6].click()
         return
           }
