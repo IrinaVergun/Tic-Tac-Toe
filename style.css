@@ -1,6 +1,10 @@
 html{
   background-image: url(img/obloko.1.jpg);
 }
+.music{
+  width:40px;
+  height: 40px;
+}
 #allContainer {
   
   display: flex;
