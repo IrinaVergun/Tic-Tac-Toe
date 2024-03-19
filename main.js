@@ -7,6 +7,8 @@ const nowGo = document.getElementById("nowGo"); //поле кто ходит
 const select = document.getElementById('floatingSelect')
 let reset=document.getElementById('reset')
 let c7=document.getElementById('c6')
+let musicButton = document.getElementById('musicA')
+
 // console.log(c5);
 
 const players = {
@@ -70,6 +72,20 @@ const winLines = [
 //     restartGame();
 //   });
 // }
+function musicA(){
+  if(true){
+  allgame.pause()
+
+}
+
+}
+ 
+
+
+
+  
+
+musicA()
 
 function res(){
   if (reset.onclick){
