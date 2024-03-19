@@ -38,7 +38,7 @@ nichiay.src = "audio/nichiay.mp3"
 
 
  function color(cell, currentPlayer){
-  allgame.play()
+  
   if (currentPlayer==players.x){
     cell.style.color='#0062ffd9'
   }
@@ -114,6 +114,7 @@ function init() {
 function startGame() {
   //начало игры
   isGameRunning = true; //игра идёт
+  allgame.play()
   cells.forEach((cell) => (cell.textContent = "")); //перебираю фор ичем ккаждую ячейку и вставляю туда пустое значение
   winner.textContent = ""; //также победителю
   currentPlayer = players.x; //игр начинает х
@@ -235,10 +236,20 @@ function compHardGo(){
     vseicheiki[4].click()
     return
   }
-  else if(vseicheiki[4].textContent=='o' && vseicheiki[8].textContent==''){
+  
+  else if(vseicheiki[4].textContent=='o' && vseicheiki[0].textContent=='х'){
 vseicheiki[8].click()
 return
   }
+  else if(vseicheiki[4].textContent=='o' && vseicheiki[6].textContent=='х'){
+    vseicheiki[2].click()
+    return
+      }
+      else if(vseicheiki[4].textContent=='o' && vseicheiki[2].textContent=='х'){
+        vseicheiki[6].click()
+        return
+          }
+  
   else {
     // сначала ищем возможную победу противника и не даем ему победить!
     for (const line of winLines) {
