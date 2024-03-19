@@ -40,6 +40,7 @@ html{
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-left: 4px;
 }
 .form-select {
   background-color:#5fefef82;
@@ -94,6 +95,15 @@ height: 35px;
 
 
 @media screen and (max-width: 576px) {
+
+.form-select {
+  width:64%;
+  font-size: 20px;
+  height: 29px;
+  /* margin-top: 2%; */
+  
+}
+
   #allContainer {
     display: flex;
     flex-direction: column;
@@ -110,7 +120,8 @@ height: 35px;
     justify-content: center;
     width: 80px;
     height: 80px;
-    border: 2px solid red;
+  border: 2px solid #be5fef;
+ 
   }
   #cells-container {
     display: grid;
@@ -127,17 +138,17 @@ height: 35px;
     width: 150px;
   }
   #nowGo {
-    margin-top: 1%;
+    margin-top: 5%;
     font-size: 30px;
-    margin-left: 26px;
-    color: rgb(50, 50, 226);
+    /* margin-left: 15px; */
+    color: #be5fef;
     font-weight: bold;
   }
   #winner {
     margin-top: 0%;
     font-size: 30px;
     margin-left: 26px;
-    color: black;
+    color: #be5fef;
     font-weight: bold;
   }
 }

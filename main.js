@@ -19,6 +19,8 @@ let isGameRunning = false; //игра не идёт
 let twoplayers = false;
 let compplay = false;
 let compHARDplay=false;
+let randomIcheika2=true
+
 
 
  function color(cell, currentPlayer){
@@ -122,7 +124,8 @@ function compGo() {
   let indexpysto = getRandomInt(0, pysto.length - 1);
   console.log(indexpysto);
   let randomIcheika = pysto[indexpysto];
-  randomIcheika.click();
+  randomIcheika.click()
+  return
 }
 
 // function checkLineComp(line) {
@@ -167,6 +170,15 @@ return false
    }
   // }
 
+function randomFirstClick(){
+  var numPool = [ 0, 2, 6,],
+  rand = numPool[Math.floor(Math.random() * numPool.length)]
+console.log(rand)
+return rand}
+
+
+
+
 function compHardGo(){
 
   
@@ -179,10 +191,28 @@ function compHardGo(){
   let indexpysto = getRandomInt(0, pysto.length - 1);
   console.log(indexpysto);
   let randomIcheika = pysto[indexpysto];
-  if(vseicheiki[6].textContent==''){vseicheiki[6].click()
-  return}
+  
+  if(pysto.length==9){
 
-  else if(vseicheiki[4].textContent==''){
+   indexpysto = randomFirstClick(0, pysto.length - 1)
+   let randomIcheika2 = pysto[indexpysto]
+   
+   console.log(indexpysto,'tyt');
+  
+    randomIcheika2.click()
+    return
+    
+   
+    
+    // randomIcheikA=false
+ }
+
+   
+
+  // if(vseicheiki[6].textContent==''){vseicheiki[6].click()
+  // return}
+
+   if(vseicheiki[4].textContent==''){
    
     vseicheiki[4].click()
     return
@@ -223,9 +253,16 @@ let two= checkLineComp(line, players.x)
       }
     }
 
+    
     randomIcheika.click();
-    return}
+    return
+    }
 
+   
+    
+
+
+   
   
   }
 
@@ -294,7 +331,7 @@ function checkGameOver() {
   }
   if (!arr.includes("")) {
     //если в массиве нету пустых строк
-    winner.textContent = "Ничья тут ёпт";
+    winner.textContent = "Пфф, всего-то ничья";
     return true;
   }
 }
